@@ -4,7 +4,7 @@ import com.crossasyst.jpademo.entity.PersonEntity;
 import com.crossasyst.jpademo.model.Person;
 import org.mapstruct.Mapper;
 
-@Mapper(componentModel = "spring")
+/*@Mapper(componentModel = "spring")*/
 public interface PersonMapper {
 
     PersonEntity personToEntity (Person person);

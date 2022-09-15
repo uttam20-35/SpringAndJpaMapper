@@ -20,9 +20,15 @@ public class PersonController {
     @Autowired
     private PersonService personService;
 
-  @PostMapping(path = "persons", consumes = MediaType.APPLICATION_JSON_VALUE,produces = MediaType.APPLICATION_JSON_VALUE)
+  @PostMapping(path = "/persons", consumes = MediaType.APPLICATION_JSON_VALUE,produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<PersonResponse> createPerson(@RequestBody Person person){
       PersonResponse personResponse=personService.createPerson(person);
-      return new ResponseEntity<PersonResponse>(personResponse,HttpStatus.OK);
+      return new ResponseEntity<>(personResponse,HttpStatus.OK);
+  }
+
+  @GetMapping(value = "/persons/{personId}" ,produces = MediaType.APPLICATION_JSON_VALUE)
+  public ResponseEntity<Person> getPerson(@PathVariable Long personId) {
+      Person person =personService.getPerson(personId);
+      return new ResponseEntity<>(person,HttpStatus.OK);
   }
 }
